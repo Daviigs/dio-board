@@ -1,239 +1,55 @@
-fev. 25, 2025 4:44:23 PM liquibase.changelog
+fev. 26, 2025 1:36:40 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202502251606.sql
-fev. 25, 2025 4:44:23 PM liquibase.snapshot
-INFO: Creating snapshot
-fev. 25, 2025 4:44:23 PM liquibase.changelog
-INFO: Creating database history table with name: board.databasechangelog
-fev. 25, 2025 4:44:23 PM liquibase.snapshot
-INFO: Creating snapshot
-fev. 25, 2025 4:44:24 PM liquibase.lockservice
-INFO: Successfully acquired change log lock
-fev. 25, 2025 4:44:24 PM liquibase.command
-INFO: Using deploymentId: 0512663298
-fev. 25, 2025 4:44:24 PM liquibase.changelog
+fev. 26, 2025 1:36:40 PM liquibase.changelog
 INFO: Reading from board.databasechangelog
-Running Changeset: db/changelog/migrations/db.changelog-202502251606.sql::raw::includeAll
-fev. 25, 2025 4:44:24 PM liquibase.changelog
-SEVERE: ChangeSet db/changelog/migrations/db.changelog-202502251606.sql::raw::includeAll encountered an exception.
-liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '--linquibase formatted sql
---changeset davi:202502251606
---comment: boards table' at line 1 [Failed SQL: (1064) --linquibase formatted sql
---changeset davi:202502251606
---comment: boards table create
-
-CREATE TABLE BOARDS(
-
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-) ENGINE=InooDB;
-
-
---rollback DROP TABLE BOARDS]
-	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:497)
-	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:83)
-	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:185)
-	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141)
-	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1189)
-	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:790)
-	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:126)
-	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:70)
-	at liquibase.changelog.ChangeLogIterator.lambda$run$0(ChangeLogIterator.java:133)
-	at liquibase.Scope.lambda$child$0(Scope.java:201)
-	at liquibase.Scope.child(Scope.java:210)
-	at liquibase.Scope.child(Scope.java:200)
-	at liquibase.Scope.child(Scope.java:179)
-	at liquibase.changelog.ChangeLogIterator.lambda$run$1(ChangeLogIterator.java:122)
-	at liquibase.Scope.lambda$child$0(Scope.java:201)
-	at liquibase.Scope.child(Scope.java:210)
-	at liquibase.Scope.child(Scope.java:200)
-	at liquibase.Scope.child(Scope.java:179)
-	at liquibase.Scope.child(Scope.java:267)
-	at liquibase.Scope.child(Scope.java:271)
-	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:91)
-	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:114)
-	at liquibase.Scope.lambda$child$0(Scope.java:201)
-	at liquibase.Scope.child(Scope.java:210)
-	at liquibase.Scope.child(Scope.java:200)
-	at liquibase.Scope.child(Scope.java:179)
-	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:112)
-	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:100)
-	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:253)
-	at liquibase.Scope.child(Scope.java:210)
-	at liquibase.Scope.child(Scope.java:186)
-	at liquibase.command.CommandScope.execute(CommandScope.java:241)
-	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216)
-	at liquibase.Scope.lambda$child$0(Scope.java:201)
-	at liquibase.Scope.child(Scope.java:210)
-	at liquibase.Scope.child(Scope.java:200)
-	at liquibase.Scope.child(Scope.java:179)
-	at liquibase.Liquibase.runInScope(Liquibase.java:1333)
-	at liquibase.Liquibase.update(Liquibase.java:205)
-	at liquibase.Liquibase.update(Liquibase.java:188)
-	at liquibase.Liquibase.update(Liquibase.java:175)
-	at liquibase.Liquibase.update(Liquibase.java:155)
-	at org.example.persistence.migration.MigrationsStrategy.executeMigration(MigrationsStrategy.java:36)
-	at org.example.Main.main(Main.java:13)
-Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '--linquibase formatted sql
---changeset davi:202502251606
---comment: boards table' at line 1
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)
-	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648)
-	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:491)
-	... 43 more
-
+fev. 26, 2025 1:36:40 PM liquibase.changelog
+INFO: Reading resource: db/changelog/migrations/db.changelog-202502261306.sql
+fev. 26, 2025 1:36:40 PM liquibase.changelog
+INFO: Reading resource: db/changelog/migrations/db.changelog-202502261319.sql
+fev. 26, 2025 1:36:40 PM liquibase.changelog
+INFO: Reading resource: db/changelog/migrations/db.changelog-202502261323.sql
+fev. 26, 2025 1:36:40 PM liquibase.lockservice
+INFO: Successfully acquired change log lock
+fev. 26, 2025 1:36:40 PM liquibase.command
+INFO: Using deploymentId: 0587800277
+fev. 26, 2025 1:36:40 PM liquibase.changelog
+INFO: Reading from board.databasechangelog
+Running Changeset: db/changelog/migrations/db.changelog-202502261319.sql::202502251606::davi
+fev. 26, 2025 1:36:41 PM liquibase.changelog
+INFO: Custom SQL executed
+fev. 26, 2025 1:36:41 PM liquibase.changelog
+INFO: ChangeSet db/changelog/migrations/db.changelog-202502261319.sql::202502251606::davi ran successfully in 47ms
+Running Changeset: db/changelog/migrations/db.changelog-202502261323.sql::202502251606::davi
+fev. 26, 2025 1:36:41 PM liquibase.changelog
+INFO: Custom SQL executed
+fev. 26, 2025 1:36:41 PM liquibase.changelog
+INFO: ChangeSet db/changelog/migrations/db.changelog-202502261323.sql::202502251606::davi ran successfully in 16ms
 
 UPDATE SUMMARY
-Run:                          0
-Previously run:               0
+Run:                          2
+Previously run:               2
 Filtered out:                 0
 -------------------------------
-Total change sets:            1
+Total change sets:            4
 
-fev. 25, 2025 4:44:24 PM liquibase.util
+fev. 26, 2025 1:36:41 PM liquibase.util
 INFO: UPDATE SUMMARY
-fev. 25, 2025 4:44:24 PM liquibase.util
-INFO: Run:                          0
-fev. 25, 2025 4:44:24 PM liquibase.util
-INFO: Previously run:               0
-fev. 25, 2025 4:44:24 PM liquibase.util
+fev. 26, 2025 1:36:41 PM liquibase.util
+INFO: Run:                          2
+fev. 26, 2025 1:36:41 PM liquibase.util
+INFO: Previously run:               2
+fev. 26, 2025 1:36:41 PM liquibase.util
 INFO: Filtered out:                 0
-fev. 25, 2025 4:44:24 PM liquibase.util
+fev. 26, 2025 1:36:41 PM liquibase.util
 INFO: -------------------------------
-fev. 25, 2025 4:44:24 PM liquibase.util
-INFO: Total change sets:            1
-fev. 25, 2025 4:44:24 PM liquibase.util
+fev. 26, 2025 1:36:41 PM liquibase.util
+INFO: Total change sets:            4
+fev. 26, 2025 1:36:41 PM liquibase.util
 INFO: Update summary generated
-fev. 25, 2025 4:44:24 PM liquibase.command
-INFO: Update command encountered an exception.
-fev. 25, 2025 4:44:24 PM liquibase.lockservice
+fev. 26, 2025 1:36:41 PM liquibase.command
+INFO: Update command completed successfully.
+Liquibase: Update has been successful. Rows affected: 2
+fev. 26, 2025 1:36:41 PM liquibase.lockservice
 INFO: Successfully released change log lock
-fev. 25, 2025 4:44:24 PM liquibase.command
-INFO: Logging exception.
-ERROR: Exception Details
-ERROR: Exception Primary Class:  SQLSyntaxErrorException
-ERROR: Exception Primary Reason:  You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '--linquibase formatted sql
---changeset davi:202502251606
---comment: boards table' at line 1
-ERROR: Exception Primary Source:  MySQL 8.0.41
-fev. 25, 2025 4:44:24 PM liquibase.command
+fev. 26, 2025 1:36:41 PM liquibase.command
 INFO: Command execution complete
-liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/migrations/db.changelog-202502251606.sql::raw::includeAll:
-     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '--linquibase formatted sql
---changeset davi:202502251606
---comment: boards table' at line 1 [Failed SQL: (1064) --linquibase formatted sql
---changeset davi:202502251606
---comment: boards table create
-
-CREATE TABLE BOARDS(
-
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-) ENGINE=InooDB;
-
-
---rollback DROP TABLE BOARDS]
-	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:300)
-	at liquibase.Scope.child(Scope.java:210)
-	at liquibase.Scope.child(Scope.java:186)
-	at liquibase.command.CommandScope.execute(CommandScope.java:241)
-	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216)
-	at liquibase.Scope.lambda$child$0(Scope.java:201)
-	at liquibase.Scope.child(Scope.java:210)
-	at liquibase.Scope.child(Scope.java:200)
-	at liquibase.Scope.child(Scope.java:179)
-	at liquibase.Liquibase.runInScope(Liquibase.java:1333)
-	at liquibase.Liquibase.update(Liquibase.java:205)
-	at liquibase.Liquibase.update(Liquibase.java:188)
-	at liquibase.Liquibase.update(Liquibase.java:175)
-	at liquibase.Liquibase.update(Liquibase.java:155)
-	at org.example.persistence.migration.MigrationsStrategy.executeMigration(MigrationsStrategy.java:36)
-	at org.example.Main.main(Main.java:13)
-Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/migrations/db.changelog-202502251606.sql::raw::includeAll:
-     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '--linquibase formatted sql
---changeset davi:202502251606
---comment: boards table' at line 1 [Failed SQL: (1064) --linquibase formatted sql
---changeset davi:202502251606
---comment: boards table create
-
-CREATE TABLE BOARDS(
-
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-) ENGINE=InooDB;
-
-
---rollback DROP TABLE BOARDS]
-	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:155)
-	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:114)
-	at liquibase.Scope.lambda$child$0(Scope.java:201)
-	at liquibase.Scope.child(Scope.java:210)
-	at liquibase.Scope.child(Scope.java:200)
-	at liquibase.Scope.child(Scope.java:179)
-	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:112)
-	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:100)
-	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:253)
-	... 15 more
-Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/migrations/db.changelog-202502251606.sql::raw::includeAll:
-     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '--linquibase formatted sql
---changeset davi:202502251606
---comment: boards table' at line 1 [Failed SQL: (1064) --linquibase formatted sql
---changeset davi:202502251606
---comment: boards table create
-
-CREATE TABLE BOARDS(
-
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-) ENGINE=InooDB;
-
-
---rollback DROP TABLE BOARDS]
-	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:840)
-	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:126)
-	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:70)
-	at liquibase.changelog.ChangeLogIterator.lambda$run$0(ChangeLogIterator.java:133)
-	at liquibase.Scope.lambda$child$0(Scope.java:201)
-	at liquibase.Scope.child(Scope.java:210)
-	at liquibase.Scope.child(Scope.java:200)
-	at liquibase.Scope.child(Scope.java:179)
-	at liquibase.changelog.ChangeLogIterator.lambda$run$1(ChangeLogIterator.java:122)
-	at liquibase.Scope.lambda$child$0(Scope.java:201)
-	at liquibase.Scope.child(Scope.java:210)
-	at liquibase.Scope.child(Scope.java:200)
-	at liquibase.Scope.child(Scope.java:179)
-	at liquibase.Scope.child(Scope.java:267)
-	at liquibase.Scope.child(Scope.java:271)
-	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:91)
-	... 23 more
-Caused by: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '--linquibase formatted sql
---changeset davi:202502251606
---comment: boards table' at line 1 [Failed SQL: (1064) --linquibase formatted sql
---changeset davi:202502251606
---comment: boards table create
-
-CREATE TABLE BOARDS(
-
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-) ENGINE=InooDB;
-
-
---rollback DROP TABLE BOARDS]
-	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:497)
-	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:83)
-	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:185)
-	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141)
-	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1189)
-	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:790)
-	... 38 more
-Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '--linquibase formatted sql
---changeset davi:202502251606
---comment: boards table' at line 1
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)
-	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648)
-	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:491)
-	... 43 more
