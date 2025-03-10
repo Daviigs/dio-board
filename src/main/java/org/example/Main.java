@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.persistence.migration.MigrationsStrategy;
+import org.example.ui.MainMenu;
 
 import java.sql.SQLException;
 
@@ -12,5 +13,8 @@ public class Main {
         try (var connection = getConnection()) {
             new MigrationsStrategy(connection).executeMigration();
         }
+
+        new MainMenu().execute();
+
     }
 }
