@@ -15,7 +15,7 @@ import static org.example.persistence.config.ConnectionConfig.getConnection;
 import static org.example.persistence.entity.BoardColumnKindEnum.*;
 
 public class MainMenu  {
-    private final Scanner sc = new Scanner(System.in);
+    private final Scanner sc = new Scanner(System.in).useDelimiter("\n");
 
     public void execute() throws SQLException{
         System.out.println("Bem vindo ao gerenciador de boards, escolha apção desejada: ");
