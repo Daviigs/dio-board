@@ -3,11 +3,14 @@ package org.example.persistence.dao;
 import com.mysql.cj.jdbc.StatementImpl;
 import lombok.AllArgsConstructor;
 import org.example.persistence.entity.BoardColumnEntity;
-import org.example.persistence.entity.BoardEntity;
+
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+
+import static org.example.persistence.entity.BoardColumnKindEnum.findByName;
 
 @AllArgsConstructor
 public class BoardColumnDAO {
@@ -31,7 +34,21 @@ public class BoardColumnDAO {
     }
 
     public List<BoardColumnEntity> findByBoardId(Long id)throws SQLException {
-
-        return null;
+        List<BoardColumnEntity> entities = new ArrayList<>();
+        var sql = "SELECT id, name `order` FROM BOARDS_COLUMNS WHERE board_id = ? ORDER BY `order`";
+        try (var statement = connection.prepareStatement(sql)){
+            statement.setLong(1, id);
+            statement.executeQuery();
+            var result = statement.getResultSet();
+            while(result.next()){
+                var entity = new BoardColumnEntity();
+                entity.setId(result.getLong("id"));
+                entity.setName(result.getString("name"));
+                entity.setOrder(result.getInt("order"));
+                entity.setKind(findByName(result.getString("kind")));
+                entities.add(entity);
+            }
+            return entities;
+        }
     }
 }

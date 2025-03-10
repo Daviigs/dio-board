@@ -24,7 +24,7 @@ public class BoardQueryService {
 
             return Optional.of(entity);
         }
-        return Optional.empty()
+        return Optional.empty();
     }
 
 }
