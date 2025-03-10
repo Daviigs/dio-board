@@ -17,7 +17,6 @@ import static org.example.persistence.entity.BoardColumnKindEnum.*;
 public class MainMenu  {
     private final Scanner sc = new Scanner(System.in);
 
-
     public void execute() throws SQLException{
         System.out.println("Bem vindo ao gerenciador de boards, escolha apção desejada: ");
         var optinal = -1;
@@ -29,16 +28,13 @@ public class MainMenu  {
             optinal = sc.nextInt();
 
             switch (optinal){
-
                 case 1 -> createBoard();
                 case 2 -> selectBoard();
                 case 3 -> deleteBoard();
                 case 4 -> System.exit(0);
                 default -> System.out.println("Opção invalida, informe um opção do menu");
             }
-
         }
-
     }
 
     private void createBoard() throws SQLException {
@@ -112,5 +108,4 @@ public class MainMenu  {
         boardColumn.setOrder(order);
         return boardColumn;
     }
-
 }
