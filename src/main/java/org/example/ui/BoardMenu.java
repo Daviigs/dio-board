@@ -6,6 +6,7 @@ import org.example.persistence.entity.BoardColumnEntity;
 import org.example.persistence.entity.BoardEntity;
 import org.example.service.BoardColumnQueryService;
 import org.example.service.BoardQueryService;
+import org.example.service.CardQueryService;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -104,6 +105,21 @@ public class BoardMenu {
 
     }
 
-    private void showCard() {
+    private void showCard() throws SQLException {
+        System.out.print("Informe o id do card que deseja visualizar: ");
+        var selectedCardId = sc.nextLong();
+
+        try (var connection = getConnection()) {
+            new CardQueryService(connection).findById(selectedCardId)
+                    .ifPresentOrElse(c -> {
+                                System.out.printf("Card %d - %s.\n", c.id(), c.title());
+                                System.out.printf("Descrição: %s\n", c.desciption());
+                                System.out.printf(c.blocked() ? "Está bloqueado. Motivo: %s\n" : "Não está bloqueado.\n", c.blockReason());
+                                System.out.printf("Já foi bloqueado %d vezes.\n", c.blocksAmount());
+                                System.out.printf("Está no momento na coluna %s - %s\n", c.columnId(), c.columnName());
+                            },
+                            () -> System.out.printf("Não existe um card com o ID %d\n", selectedCardId));
+        }
     }
+
 }
