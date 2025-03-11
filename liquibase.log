@@ -1,15 +1,15 @@
-mar. 10, 2025 11:41:05 AM liquibase.changelog
+mar. 11, 2025 6:56:06 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202502251606.sql
-mar. 10, 2025 11:41:05 AM liquibase.changelog
+mar. 11, 2025 6:56:06 PM liquibase.changelog
 INFO: Reading from board.databasechangelog
-mar. 10, 2025 11:41:05 AM liquibase.changelog
+mar. 11, 2025 6:56:06 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202502261306.sql
-mar. 10, 2025 11:41:05 AM liquibase.changelog
+mar. 11, 2025 6:56:06 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202502261319.sql
-mar. 10, 2025 11:41:05 AM liquibase.changelog
+mar. 11, 2025 6:56:06 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202502261323.sql
 Database is up to date, no changesets to execute
-mar. 10, 2025 11:41:05 AM liquibase.changelog
+mar. 11, 2025 6:56:06 PM liquibase.changelog
 INFO: Reading from board.databasechangelog
 
 UPDATE SUMMARY
@@ -19,19 +19,19 @@ Filtered out:                 0
 -------------------------------
 Total change sets:            4
 
-mar. 10, 2025 11:41:05 AM liquibase.util
+mar. 11, 2025 6:56:06 PM liquibase.util
 INFO: UPDATE SUMMARY
-mar. 10, 2025 11:41:05 AM liquibase.util
+mar. 11, 2025 6:56:06 PM liquibase.util
 INFO: Run:                          0
-mar. 10, 2025 11:41:05 AM liquibase.util
+mar. 11, 2025 6:56:06 PM liquibase.util
 INFO: Previously run:               4
-mar. 10, 2025 11:41:05 AM liquibase.util
+mar. 11, 2025 6:56:06 PM liquibase.util
 INFO: Filtered out:                 0
-mar. 10, 2025 11:41:05 AM liquibase.util
+mar. 11, 2025 6:56:06 PM liquibase.util
 INFO: -------------------------------
-mar. 10, 2025 11:41:05 AM liquibase.util
+mar. 11, 2025 6:56:06 PM liquibase.util
 INFO: Total change sets:            4
-mar. 10, 2025 11:41:05 AM liquibase.util
+mar. 11, 2025 6:56:06 PM liquibase.util
 INFO: Update summary generated
-mar. 10, 2025 11:41:05 AM liquibase.command
+mar. 11, 2025 6:56:06 PM liquibase.command
 INFO: Command execution complete

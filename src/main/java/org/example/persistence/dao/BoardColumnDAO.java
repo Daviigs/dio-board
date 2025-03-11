@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static java.util.Objects.isNull;
 import static org.example.persistence.entity.BoardColumnKindEnum.findByName;
 
 @AllArgsConstructor
@@ -58,16 +59,15 @@ public class BoardColumnDAO {
         List<BoardColumnDTO> dtos = new ArrayList<>();
         var sql =
                 """
-                        SELECT
-                        bc.id,
-                        bc.name,
-                        bc.kind,
-                        COUNT(c.id) AS cards_amount
-                         FROM BOARDS_COLUMNS bc
-                         LEFT JOIN CARDS c ON c.board_column_id = bc.id
-                         WHERE bc.board_id = ?
-                         GROUP BY bc.id
-                         ORDER BY bc.`order`
+                    SELECT bc.id,
+                           bc.name,
+                           bc.kind,
+                           (SELECT COUNT(c.id)
+                                   FROM CARDS c
+                                   WHERE c.board_column_id = bc.id) cards_amount
+                            FROM BOARDS_COLUMNS bc
+                            WHERE board_id = ?
+                            ORDER BY `order`;
                         """;
         try (var statement = connection.prepareStatement(sql)) {
             statement.setLong(1, boardId);
@@ -86,15 +86,15 @@ public class BoardColumnDAO {
         }
     }
 
-    public Optional<BoardColumnEntity> findById(Long boardId) throws SQLException {
-        List<BoardColumnEntity> entities = new ArrayList<>();
+    public Optional<BoardColumnEntity> findById(final Long boardId) throws SQLException {
         var sql = """
                 SELECT bc.name,
                        bc.kind,
                        c.id,
+                       c.title,
                        c.description
                        FROM BOARDS_COLUMNS bc
-                       INNER JOIN CARDS c
+                       LEFT JOIN CARDS c
                        ON c.board_column_id = bc.id
                        WHERE bc.id = ?
                 """;
@@ -109,12 +109,16 @@ public class BoardColumnDAO {
                 entity.setKind(findByName(result.getString("bc.kind")));
 
                 do {
+                    if(isNull(result.getString("c.title"))){
+                        break;
+                    }
                     var card = new CardEntity();
                     card.setId(result.getLong("c.id"));
                     card.setTitle(result.getString("c.title"));
                     card.setDescription(result.getString("c.description"));
                     entity.getCards().add(card);
                 } while (result.next());
+                return Optional.of(entity);
             }
             return Optional.empty();
         }

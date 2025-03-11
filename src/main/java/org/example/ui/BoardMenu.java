@@ -4,14 +4,17 @@ package org.example.ui;
 import lombok.AllArgsConstructor;
 import org.example.persistence.entity.BoardColumnEntity;
 import org.example.persistence.entity.BoardEntity;
+import org.example.persistence.entity.CardEntity;
 import org.example.service.BoardColumnQueryService;
 import org.example.service.BoardQueryService;
 import org.example.service.CardQueryService;
+import org.example.service.CardService;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
 import static org.example.persistence.config.ConnectionConfig.getConnection;
+import static org.example.persistence.entity.BoardColumnKindEnum.INITIAL;
 
 @AllArgsConstructor
 public class BoardMenu {
@@ -22,7 +25,7 @@ public class BoardMenu {
 
     public void execute() {
         try {
-            System.out.printf("Bem vindo ao board %s, selecione a operação desejada: ", entity.getId());
+            System.out.printf("Bem vindo ao board %s, selecione a operação desejada:\n ", entity.getId());
 
             var optinal = -1;
             while (optinal != 9) {
@@ -58,7 +61,17 @@ public class BoardMenu {
         }
     }
 
-    private void createCard() {
+    private void createCard() throws SQLException {
+        var card = new CardEntity();
+        System.out.printf("Informe o título do card:");
+        card.setTitle(sc.next());
+        System.out.printf("Informe o descrição do card:");
+        card.setDescription(sc.next());
+        card.setBoardColumn(entity.getInitialColumn());
+        try (var connection = getConnection()) {
+            new CardService(connection).insert(card);
+        }
+
     }
 
     private void moveCard() {
@@ -99,7 +112,7 @@ public class BoardMenu {
             var column = new BoardColumnQueryService(connection).findById(selectedColumn);
             column.ifPresent(co -> {
                 System.out.printf("Coluna %s tipo %s\n", co.getName(), co.getKind());
-                co.getCards().forEach(ca -> System.out.printf("Card %s - %s\nDescrição: %s", ca.getId(), ca.getTitle(), ca.getDescription()));
+                co.getCards().forEach(ca -> System.out.printf("Card %s - %s\nDescrição: %s\n", ca.getId(), ca.getTitle(), ca.getDescription()));
             });
         }
 
