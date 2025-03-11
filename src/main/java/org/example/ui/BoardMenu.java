@@ -2,6 +2,7 @@ package org.example.ui;
 
 
 import lombok.AllArgsConstructor;
+import org.example.dto.BoardColumnInfoDTO;
 import org.example.persistence.entity.BoardColumnEntity;
 import org.example.persistence.entity.BoardEntity;
 import org.example.persistence.entity.CardEntity;
@@ -14,7 +15,6 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import static org.example.persistence.config.ConnectionConfig.getConnection;
-import static org.example.persistence.entity.BoardColumnKindEnum.INITIAL;
 
 @AllArgsConstructor
 public class BoardMenu {
@@ -69,12 +69,22 @@ public class BoardMenu {
         card.setDescription(sc.next());
         card.setBoardColumn(entity.getInitialColumn());
         try (var connection = getConnection()) {
-            new CardService(connection).insert(card);
+            new CardService(connection).create(card);
         }
 
     }
 
-    private void moveCard() {
+    private void moveCard()throws SQLException {
+        System.out.println("Informe o id do card que deseja mover para a próxima coluna");
+        var cardId = sc.nextLong();
+        var boardColumnsInfo = entity.getBoardColumns().stream()
+                .map(bc -> new BoardColumnInfoDTO(bc.getId(), bc.getOrder(), bc.getKind()))
+                .toList();
+        try (var connection = getConnection()) {
+            new CardService(connection).moveToNextColumn(cardId,boardColumnsInfo );
+        }catch (RuntimeException ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     private void blockCard() {
