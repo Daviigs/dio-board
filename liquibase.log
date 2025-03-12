@@ -1,37 +1,172 @@
-mar. 11, 2025 6:56:06 PM liquibase.changelog
+mar. 12, 2025 8:52:00 AM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202502251606.sql
-mar. 11, 2025 6:56:06 PM liquibase.changelog
+mar. 12, 2025 8:52:00 AM liquibase.changelog
 INFO: Reading from board.databasechangelog
-mar. 11, 2025 6:56:06 PM liquibase.changelog
+mar. 12, 2025 8:52:00 AM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202502261306.sql
-mar. 11, 2025 6:56:06 PM liquibase.changelog
+mar. 12, 2025 8:52:00 AM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202502261319.sql
-mar. 11, 2025 6:56:06 PM liquibase.changelog
+mar. 12, 2025 8:52:00 AM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202502261323.sql
-Database is up to date, no changesets to execute
-mar. 11, 2025 6:56:06 PM liquibase.changelog
+mar. 12, 2025 8:52:00 AM liquibase.changelog
+INFO: Reading resource: db/changelog/migrations/db.changelog-202503120844.sql
+mar. 12, 2025 8:52:00 AM liquibase.lockservice
+INFO: Successfully acquired change log lock
+mar. 12, 2025 8:52:00 AM liquibase.command
+INFO: Using deploymentId: 1780319776
+mar. 12, 2025 8:52:00 AM liquibase.changelog
 INFO: Reading from board.databasechangelog
+Running Changeset: db/changelog/migrations/db.changelog-202503120844.sql::202502251606::davi
+mar. 12, 2025 8:52:00 AM liquibase.changelog
+SEVERE: ChangeSet db/changelog/migrations/db.changelog-202503120844.sql::202502251606::davi encountered an exception.
+liquibase.exception.DatabaseException: Table 'board.block' doesn't exist [Failed SQL: (1146) ALTER TABLE BLOCK MODIFY COLUMN unblock_reason VARCHAR(255) NULL]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:497)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:83)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:185)
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1189)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:790)
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:126)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:70)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$0(ChangeLogIterator.java:133)
+	at liquibase.Scope.lambda$child$0(Scope.java:201)
+	at liquibase.Scope.child(Scope.java:210)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$1(ChangeLogIterator.java:122)
+	at liquibase.Scope.lambda$child$0(Scope.java:201)
+	at liquibase.Scope.child(Scope.java:210)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.Scope.child(Scope.java:267)
+	at liquibase.Scope.child(Scope.java:271)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:91)
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:114)
+	at liquibase.Scope.lambda$child$0(Scope.java:201)
+	at liquibase.Scope.child(Scope.java:210)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:112)
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:100)
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:253)
+	at liquibase.Scope.child(Scope.java:210)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.command.CommandScope.execute(CommandScope.java:241)
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216)
+	at liquibase.Scope.lambda$child$0(Scope.java:201)
+	at liquibase.Scope.child(Scope.java:210)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.Liquibase.runInScope(Liquibase.java:1333)
+	at liquibase.Liquibase.update(Liquibase.java:205)
+	at liquibase.Liquibase.update(Liquibase.java:188)
+	at liquibase.Liquibase.update(Liquibase.java:175)
+	at liquibase.Liquibase.update(Liquibase.java:155)
+	at org.example.persistence.migration.MigrationsStrategy.executeMigration(MigrationsStrategy.java:36)
+	at org.example.Main.main(Main.java:14)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'board.block' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:491)
+	... 43 more
+
 
 UPDATE SUMMARY
 Run:                          0
 Previously run:               4
 Filtered out:                 0
 -------------------------------
-Total change sets:            4
+Total change sets:            5
 
-mar. 11, 2025 6:56:06 PM liquibase.util
+mar. 12, 2025 8:52:00 AM liquibase.util
 INFO: UPDATE SUMMARY
-mar. 11, 2025 6:56:06 PM liquibase.util
+mar. 12, 2025 8:52:00 AM liquibase.util
 INFO: Run:                          0
-mar. 11, 2025 6:56:06 PM liquibase.util
+mar. 12, 2025 8:52:00 AM liquibase.util
 INFO: Previously run:               4
-mar. 11, 2025 6:56:06 PM liquibase.util
+mar. 12, 2025 8:52:00 AM liquibase.util
 INFO: Filtered out:                 0
-mar. 11, 2025 6:56:06 PM liquibase.util
+mar. 12, 2025 8:52:00 AM liquibase.util
 INFO: -------------------------------
-mar. 11, 2025 6:56:06 PM liquibase.util
-INFO: Total change sets:            4
-mar. 11, 2025 6:56:06 PM liquibase.util
+mar. 12, 2025 8:52:00 AM liquibase.util
+INFO: Total change sets:            5
+mar. 12, 2025 8:52:00 AM liquibase.util
 INFO: Update summary generated
-mar. 11, 2025 6:56:06 PM liquibase.command
+mar. 12, 2025 8:52:00 AM liquibase.command
+INFO: Update command encountered an exception.
+mar. 12, 2025 8:52:00 AM liquibase.lockservice
+INFO: Successfully released change log lock
+mar. 12, 2025 8:52:00 AM liquibase.command
+INFO: Logging exception.
+ERROR: Exception Details
+ERROR: Exception Primary Class:  SQLSyntaxErrorException
+ERROR: Exception Primary Reason:  Table 'board.block' doesn't exist
+ERROR: Exception Primary Source:  MySQL 8.0.41
+mar. 12, 2025 8:52:00 AM liquibase.command
 INFO: Command execution complete
+liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/migrations/db.changelog-202503120844.sql::202502251606::davi:
+     Reason: liquibase.exception.DatabaseException: Table 'board.block' doesn't exist [Failed SQL: (1146) ALTER TABLE BLOCK MODIFY COLUMN unblock_reason VARCHAR(255) NULL]
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:300)
+	at liquibase.Scope.child(Scope.java:210)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.command.CommandScope.execute(CommandScope.java:241)
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216)
+	at liquibase.Scope.lambda$child$0(Scope.java:201)
+	at liquibase.Scope.child(Scope.java:210)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.Liquibase.runInScope(Liquibase.java:1333)
+	at liquibase.Liquibase.update(Liquibase.java:205)
+	at liquibase.Liquibase.update(Liquibase.java:188)
+	at liquibase.Liquibase.update(Liquibase.java:175)
+	at liquibase.Liquibase.update(Liquibase.java:155)
+	at org.example.persistence.migration.MigrationsStrategy.executeMigration(MigrationsStrategy.java:36)
+	at org.example.Main.main(Main.java:14)
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/migrations/db.changelog-202503120844.sql::202502251606::davi:
+     Reason: liquibase.exception.DatabaseException: Table 'board.block' doesn't exist [Failed SQL: (1146) ALTER TABLE BLOCK MODIFY COLUMN unblock_reason VARCHAR(255) NULL]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:155)
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:114)
+	at liquibase.Scope.lambda$child$0(Scope.java:201)
+	at liquibase.Scope.child(Scope.java:210)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:112)
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:100)
+	at liquibase.command.CommandScope.lambda$execute$6(CommandScope.java:253)
+	... 15 more
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/migrations/db.changelog-202503120844.sql::202502251606::davi:
+     Reason: liquibase.exception.DatabaseException: Table 'board.block' doesn't exist [Failed SQL: (1146) ALTER TABLE BLOCK MODIFY COLUMN unblock_reason VARCHAR(255) NULL]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:840)
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:126)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:70)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$0(ChangeLogIterator.java:133)
+	at liquibase.Scope.lambda$child$0(Scope.java:201)
+	at liquibase.Scope.child(Scope.java:210)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$1(ChangeLogIterator.java:122)
+	at liquibase.Scope.lambda$child$0(Scope.java:201)
+	at liquibase.Scope.child(Scope.java:210)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.Scope.child(Scope.java:267)
+	at liquibase.Scope.child(Scope.java:271)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:91)
+	... 23 more
+Caused by: liquibase.exception.DatabaseException: Table 'board.block' doesn't exist [Failed SQL: (1146) ALTER TABLE BLOCK MODIFY COLUMN unblock_reason VARCHAR(255) NULL]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:497)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:83)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:185)
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1189)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:790)
+	... 38 more
+Caused by: java.sql.SQLSyntaxErrorException: Table 'board.block' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:491)
+	... 43 more

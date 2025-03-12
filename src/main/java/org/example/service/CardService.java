@@ -6,6 +6,7 @@ import org.example.dto.CardDetailsDTO;
 import org.example.exception.CardBlockedException;
 import org.example.exception.CardFinishedException;
 import org.example.exception.EntityNotFoundException;
+import org.example.persistence.dao.BlockDAO;
 import org.example.persistence.dao.CardDAO;
 import org.example.persistence.entity.CardEntity;
 
@@ -13,6 +14,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import static org.example.persistence.entity.BoardColumnKindEnum.CANCEL;
 import static org.example.persistence.entity.BoardColumnKindEnum.FINAL;
 
 
@@ -61,7 +63,8 @@ public class CardService {
 
     }
 
-    public void cancel(final Long cardId,final Long CancelColumnId ,final List<BoardColumnInfoDTO> boardColumnsInfo) throws SQLException {
+    public void cancel(final Long cardId, final Long CancelColumnId,
+                       final List<BoardColumnInfoDTO> boardColumnsInfo) throws SQLException {
         try {
             var dao = new CardDAO(connection);
             var optional = dao.findById(cardId);
@@ -88,5 +91,29 @@ public class CardService {
 
     }
 
+    public void block(final Long id, final String reason, final List<BoardColumnInfoDTO> boardColumnsInfo) throws SQLException {
+        try {
+            var dao = new CardDAO(connection);
+            var optional = dao.findById(id);
+            var dto = optional.orElseThrow(()
+                    -> new EntityNotFoundException("O card de id %s não foi encontrado".formatted(id)));
+            if (dto.blocked()) {
+                throw new CardBlockedException("O card %s já está bloqueado".formatted(id));
+            }
+            var currentColumn = boardColumnsInfo.stream()
+                    .filter(bc ->bc.id().equals(dto.columnId()))
+                    .findFirst().orElseThrow();
+            if(currentColumn.kind().equals(FINAL) || currentColumn.kind().equals(CANCEL)){
+                throw new IllegalStateException("O card está em uma coluna do tipo que não pode ser bloqueado");
+            }
+            var blockDAO = new BlockDAO(connection);
+            blockDAO.block(id, reason);
+
+            connection.commit();
+        } catch (SQLException ex) {
+            connection.rollback();
+            throw ex;
+        }
+    }
 
 }
