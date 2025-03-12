@@ -101,19 +101,37 @@ public class CardService {
                 throw new CardBlockedException("O card %s já está bloqueado".formatted(id));
             }
             var currentColumn = boardColumnsInfo.stream()
-                    .filter(bc ->bc.id().equals(dto.columnId()))
+                    .filter(bc -> bc.id().equals(dto.columnId()))
                     .findFirst().orElseThrow();
-            if(currentColumn.kind().equals(FINAL) || currentColumn.kind().equals(CANCEL)){
+            if (currentColumn.kind().equals(FINAL) || currentColumn.kind().equals(CANCEL)) {
                 throw new IllegalStateException("O card está em uma coluna do tipo que não pode ser bloqueado");
             }
             var blockDAO = new BlockDAO(connection);
-            blockDAO.block(id, reason);
-
+            blockDAO.block(reason, id);
             connection.commit();
         } catch (SQLException ex) {
             connection.rollback();
             throw ex;
         }
+    }
+
+    public void unblock(final Long id, final String reason)throws SQLException {
+        try {
+            var dao = new CardDAO(connection);
+            var optional = dao.findById(id);
+            var dto = optional.orElseThrow(()
+                    -> new EntityNotFoundException("O card de id %s não foi encontrado".formatted(id)));
+            if (!dto.blocked()) {
+                throw new CardBlockedException("O card %s não está bloqueado".formatted(id));
+            }
+            var blockDAO = new BlockDAO(connection);
+            blockDAO.unblock(reason, id);
+            connection.commit();
+        } catch (SQLException ex) {
+            connection.rollback();
+            throw ex;
+        }
+
     }
 
 }
